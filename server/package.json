@@ -9,5 +9,8 @@
   },
   "author": "wxbsuifeng",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "moment": "^2.29.1"
+  }
 }
