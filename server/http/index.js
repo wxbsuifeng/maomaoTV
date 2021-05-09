@@ -1,11 +1,9 @@
 const http = require('http');
-const Logger = require('../public/logger')
+const requestResolve = require('../public/requestResolve')
 
 module.exports = function() {
   return http.createServer(function (request, response) {
-    Logger('request')
-
-    response.write('123213');
+    requestResolve(request, response);
     response.end();
   })
 }

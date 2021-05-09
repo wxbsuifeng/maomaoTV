@@ -9,13 +9,15 @@ if (!fs.existsSync(LOGGER_DIR)) {
 }
 
 module.exports = function logger (str) {
-  let currentDay = moment(Date.now()).format('YYYY-MM-DD');
+  let date = Date.now();
+  let currentDay = moment(date).format('YYYY-MM-DD');
+  let currentTime = moment(date).format('HH:mm:SS');
   let fileName = path.join(LOGGER_DIR, `${currentDay}.txt`);
 
   if (!fs.existsSync(fileName)) {
     fs.createFile(fileName)
   }
   
-  str = '\n' + str;
+  str = '\n' + currentTime + ': ' + str;
   fs.appendFile(fileName, str);
 }
