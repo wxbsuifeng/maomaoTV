@@ -1,5 +1,6 @@
 const access = require('../api/access');
 const logger = require('../public/logger');
+const responseResolve = require('./responseResolve')
 
 const acessApi = ['login', 'logout'];
 
@@ -9,13 +10,13 @@ module.exports = function (request, response) {
     return;
   }
 
-  let url = request.url.replace(/\/api\//, ''), result;
-  logger(url);
+  let url = request.url.replace(/\/api\//, ''), result = {};
 
   //access api
-  if(acessApi.includes(url)) {
+  if(access[url]) {
     result = access[url]('user111');
+    logger(url + '\t\t' + JSON.stringify(result));
   }
   
-  response.write(result);
+  responseResolve(response, result);
 }
