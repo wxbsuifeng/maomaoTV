@@ -1,21 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <fit-layout>
+    <div class="test"></div>
+    <img alt="Vue logo" src="./assets/logo.png" />
+  </fit-layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import FitLayout from './components/fit-layout.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    FitLayout
   }
 })
 </script>
 
-<style>
+<style lang="less">
+@import "./style/index";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +27,12 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  .test {
+    margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    background: black;
+  }
 }
 </style>
