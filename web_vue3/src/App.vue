@@ -1,7 +1,6 @@
 <template>
   <fit-layout>
-    <div class="test"></div>
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <router-view></router-view>
   </fit-layout>
 </template>
 
