@@ -12,7 +12,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/list_all',
+    path: '/list-all',
     component: ListAll
   }
 ]
