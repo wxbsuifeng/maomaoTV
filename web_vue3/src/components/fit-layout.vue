@@ -8,8 +8,8 @@
   import { reactive, toRefs, onMounted, computed, watch } from 'vue'
 
   const DesignSize = {
-    width: 2560,
-    height: 1297
+    width: 1920,
+    height: 937
   }
   const getViewScale = userDesignsize => {
     return {
