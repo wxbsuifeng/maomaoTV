@@ -31,7 +31,7 @@
           class="search-result"
           v-if="showSearchModal"
         >
-          <i></i>
+          <i class="arrow-top"></i>
           <p
             class="result-item"
             v-for="item in searchContent"
@@ -51,10 +51,44 @@
         >
           {{ item.title }}
         </p>
-        <img
-          :src="'@/../static/img/self.jpg'"
-          class="self-icon"
-        />
+        <div
+          class="self-container"
+          @mouseenter="handleSelfFocuse"
+          @mouseleave="showSelfModal = false;"
+        >
+          <img
+            :src="'@/../static/img/self.jpg'"
+            class="self-icon"
+          />
+          <div
+            class="self-opreate"
+            v-if="showSelfModal"
+          >
+            <i class="arrow-top self-arrow"></i>
+            <p class="operate-header">
+              <span>云端顶配主机</span>
+              <span class="label-logout">登出</span>
+            </p>
+            <div class="operate-self">
+              <img
+                :src="'@/../static/img/self.jpg'"
+                class="self-img"
+              />
+              <div class="detail-info">
+                <span class="cur-level">lv22</span>
+                <div class="process-container">
+                  <el-progress
+                    :text-inside="true"
+                    :stroke-width="12"
+                    :percentage="70"
+                    style="font-size: 6px;"
+                  ></el-progress>
+                </div>
+                <span class="next-level">lv33</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -70,6 +104,7 @@
         curTab: '直播',
         searchParam: '',
         showSearchModal: false,
+        showSelfModal: false,
         searchContent: [
           {
             name: 'name1',
@@ -147,10 +182,15 @@
         data.showSearchModal = true;
       }
 
+      function handleSelfFocuse() {
+        data.showSelfModal = true;
+      }
+
       return {
         ...refData,
         handleTabClick,
-        handleSearchFocuse
+        handleSearchFocuse,
+        handleSelfFocuse
       }
     }
   };
@@ -198,30 +238,11 @@
           left: 0;
         }
 
-        i {
-          width: 0;
-          height: 0;
-
-          &::before {
-            position: absolute;
-            content: "";
-            top: -10px;
-            margin-left: -7px;
-            border-top: 0;
-            border-right: 7px dashed transparent;
-            border-bottom: 7px solid #ff5d23;
-            border-left: 7px dashed transparent;
-            display: inline-block;
-            width: 0;
-            height: 0;
-            vertical-align: middle;
-          }
-        }
         .result-item {
           box-sizing: border-box;
           padding-left: 20px;
-          height: 50px;
-          line-height: 50px;
+          height: 40px;
+          line-height: 40px;
           text-align: left;
           cursor: pointer;
 
@@ -229,6 +250,26 @@
             background: rgba(0, 0, 0, 0.1);
           }
         }
+      }
+    }
+
+    .arrow-top {
+      width: 0;
+      height: 0;
+
+      &::before {
+        position: absolute;
+        content: "";
+        top: -10px;
+        margin-left: -7px;
+        border-top: 0;
+        border-right: 7px dashed transparent;
+        border-bottom: 7px solid #ff5d23;
+        border-left: 7px dashed transparent;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        vertical-align: middle;
       }
     }
 
@@ -269,13 +310,98 @@
       margin-right: 10px;
     }
 
-    .self-icon {
+    .self-container {
       width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      height: 60px;
+      position: relative;
       display: inline-block;
       vertical-align: middle;
+    }
+    
+    .self-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .self-opreate {
+      position: absolute;
+      top: 45px;
+      right: 0;
+      width: 260px;
+      margin-top: 25px;
+      padding: 15px 10px 15px 10px;
+      font-size: 12px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+      -webkit-box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+
+      &::before {
+        content: "";
+        width: 100%;
+        height: 0;
+        border-top: 3px solid #ff5d23;
+        position: absolute;
+        top: -3px;
+        left: 0;
+      }
+
+      .self-arrow {
+        position: absolute;
+        right: 25px;
+        top: 0px;
+      }
+
+      .operate-header {
+        height: 30px;
+        span {
+          float: left;
+        }
+
+        .label-logout {
+          float: right;
+          cursor: pointer;
+
+          &:hover {
+            color: #ff5d23;
+          }
+        }
+      }
+
+      .operate-self {
+        .self-img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+
+        .detail-info {
+          margin-top: 15px;
+
+          span {
+            display: inline-block;
+            padding: 0 5px 0 5px;
+            border: 1px solid lightgray;
+            color: lightgray;
+            vertical-align: middle;
+          }
+
+          .cur-level {
+            border: 1px solid #ff5d23;
+            color: #ff5d23;
+          }
+
+          .process-container {
+            display: inline-block;
+            vertical-align: middle;
+            width: 160px;
+            margin: 0 5px 0 5px;
+          }
+        }
+      }
     }
   }
 }
