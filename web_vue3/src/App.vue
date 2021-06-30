@@ -1,6 +1,7 @@
 <template>
   <fit-layout>
     <Header></Header>
+    <Left></Left>
     <router-view></router-view>
   </fit-layout>
 </template>
@@ -9,12 +10,14 @@
 import { defineComponent } from 'vue'
 import FitLayout from './components/fit-layout.vue'
 import Header from './components/header/index.vue'
+import Left from './components/left/index.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     FitLayout,
-    Header
+    Header,
+    Left
   }
 })
 </script>

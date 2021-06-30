@@ -94,8 +94,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import { reactive, toRefs, onBeforeMount, onMounted } from 'vue'
+  interface TitleObject {
+    title: string
+  }
 
   export default {
     name: 'home',
@@ -174,7 +177,7 @@
       onMounted(() => {
       })
 
-      function handleTabClick(item) {
+      function handleTabClick(item:TitleObject) {
         data.curTab = item.title;
       }
       
@@ -200,6 +203,7 @@
 .header-wrap {
   width: 100%;
   position: fixed;
+  font-size: 18px;
   top: 0;
   left: 0;
   background: #fff;
