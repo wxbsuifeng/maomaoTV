@@ -2,7 +2,9 @@
   <fit-layout>
     <Header></Header>
     <Left></Left>
-    <router-view></router-view>
+    <div class="content-container">
+      <router-view></router-view>
+    </div>
   </fit-layout>
 </template>
 
@@ -31,5 +33,18 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  .content-container {
+    position: absolute;
+    top: 60px;
+    left: 240px;
+    width: 1680px;
+    height: calc(100% - 60px);
+    background-color: #f2f5f6;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 30px 20px 20px 20px;
+    text-align: left;
+  }
 }
 </style>
