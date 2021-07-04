@@ -208,6 +208,7 @@
   left: 0;
   background: #fff;
   border-bottom: 1px solid #eee;
+  z-index: 99;
 
   .header-container {
     margin: 0 auto;
@@ -228,6 +229,7 @@
         top: 65px;
         left: 0;
         width: 200px;
+        background-color: #fff;
         border-radius: 5px;
         box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
         -webkit-box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
@@ -252,6 +254,7 @@
 
           &:hover {
             background: rgba(0, 0, 0, 0.1);
+            color: #ff5d23;
           }
         }
       }
@@ -339,6 +342,7 @@
       padding: 15px 10px 15px 10px;
       font-size: 12px;
       border-radius: 5px;
+      background-color: #fff;
       box-sizing: border-box;
       box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
       -webkit-box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
