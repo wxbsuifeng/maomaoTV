@@ -1,0 +1,15 @@
+pm2: 对node的cluster模块进行了封装，
+
+    node cluster: 
+      1.扩展 socket option，增加 SO_REUSEPORT 选项，用来设置 reuseport
+
+      2.修改 bind 系统调用实现，以便支持可以绑定到相同的 IP 和端口
+
+      3.修改处理新建连接的实现，查找 listener 的时候，能够支持在监听相同 IP 和端口的多个 sock 之间均衡选择。
+
+    pm2: 
+      1.Satan.js提供了程序的退出、杀死等方法;
+  
+      2.God进程启动后一直运行，它相当于cluster中的Master进程，守护着worker进程的正常运行；
+
+      3. rpc 进程间的通信，Satan、God间建立rpc通信。
