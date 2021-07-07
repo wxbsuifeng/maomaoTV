@@ -1,10 +1,12 @@
-import React from 'react';
 import './App.less';
+import FitLayout from './components/layout/FitLayout';
 
 function App() {
   return (
-    <div className="App">
-      test111
+    <div className="app-div">
+      <FitLayout>
+        123123123
+      </FitLayout>
     </div>
   );
 }
